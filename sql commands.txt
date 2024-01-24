@@ -1,0 +1,122 @@
+Enter password: ****************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 214
+Server version: 8.0.35 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> -- Create the my_restaurant_db database
+mysql> CREATE DATABASE IF NOT EXISTS my_restaurant_db;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> USE my_restaurant_db;
+Database changed
+mysql>
+mysql> -- Create the foods table
+mysql> CREATE TABLE IF NOT EXISTS foods (
+    ->     id INT PRIMARY KEY,
+    ->     name VARCHAR(255),
+    ->     price DECIMAL(10, 2)
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql>
+mysql> -- Insert sample data into the foods table
+mysql> INSERT INTO foods (id, name, price) VALUES
+    ->     (1, 'Burger', 8.99),
+    ->     (2, 'Pizza', 12.99),
+    ->     (3, 'Salad', 6.99);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> -- Create the drinks table
+mysql> CREATE TABLE IF NOT EXISTS drinks (
+    ->     id INT PRIMARY KEY,
+    ->     name VARCHAR(255),
+    ->     price DECIMAL(10, 2)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>
+mysql> -- Insert sample data into the drinks table
+mysql> INSERT INTO drinks (id, name, price) VALUES
+    ->     (41, 'Cola', 2.99),
+    ->     (42, 'Orange Juice', 3.49),
+    ->     (43, 'Coffee', 1.99);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> -- Create the services table
+mysql> CREATE TABLE IF NOT EXISTS services (
+    ->     id INT PRIMARY KEY,
+    ->     name VARCHAR(255),
+    ->     price DECIMAL(10, 2)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>
+mysql> -- Insert sample data into the services table
+mysql> INSERT INTO services (id, name, price) VALUES
+    ->     (1, 'Cleaning Service', 20.00),
+    ->     (2, 'Event Planning', 50.00),
+    ->     (3, 'Technical Support', 25.00);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> -- Create the orders table
+mysql> CREATE TABLE IF NOT EXISTS orders (
+    ->     order_id INT PRIMARY KEY,
+    ->     item_type VARCHAR(255),
+    ->     item_id INT,
+    ->     quantity INT
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>
+mysql> -- Insert sample data into the orders table
+mysql> INSERT INTO orders (order_id, item_type, item_id, quantity) VALUES
+    ->     (1, 'foods', 1, 2),
+    ->     (2, 'drinks', 42, 3),
+    ->     (3, 'services', 2, 1);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> -- Update prices for foods
+mysql> UPDATE foods SET price = 18.99 WHERE id = 1;  -- Replace 18.99 with the new price for the food item with ID 1
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE foods SET price = 14.99 WHERE id = 2;  -- Replace 14.99 with the new price for the food item with ID 2
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>
+mysql> -- Update prices for drinks
+mysql> UPDATE drinks SET price = 3.49 WHERE id = 1;  -- Replace 3.49 with the new price for the drink item with ID 1
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> UPDATE drinks SET price = 4.99 WHERE id = 2;  -- Replace 4.99 with the new price for the drink item with ID 2
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql>
+mysql> -- Update prices for services
+mysql> UPDATE services SET price = 30.00 WHERE id = 1;  -- Replace 30.00 with the new price for the service with ID 1
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE services SET price = 35.00 WHERE id = 2;  -- Replace 35.00 with the new price for the service with ID 2
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>
